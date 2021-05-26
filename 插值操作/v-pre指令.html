@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-pre指令</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <!--将文本不做任何处理 直接显示-->
+    <h2 v-pre>{{message}}</h2>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "模板"
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+
+</body>
+</html>

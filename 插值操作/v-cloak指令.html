@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+  [v-cloak]{
+      display: none;
+  }
+</style>
+
+<body>
+
+  <div id="app">
+    <h1>{{message}}</h1>
+
+    <!--当vue解析之前，这个h1有v-cloak属性-->
+    <!--当vue解析之后，vue会将v-cloak属性删除-->
+    <!--根据定义的css 会将带v-cloak属性的dom隐藏-->
+    <h1 v-cloak>{{message}}</h1>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  /*延迟一秒执行*/
+  setTimeout(function (){
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: "模板"
+      },
+      methods: {
+
+      }
+    })
+  },1000)
+
+
+</script>
+
+
+
+</body>
+</html>
