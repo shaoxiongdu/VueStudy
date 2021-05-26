@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  .red{
+      color: red;
+  }
+</style>
+<body>
+
+
+  <div id="app">
+
+    <!-- 动态绑定class属性 -->
+    <h2 :class="[isRed,isLine]">{{message}}</h2>
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "模板",
+      isRed: 'red',
+      isLine: 'line'
+    },
+  })
+
+</script>
+
+
+
+</body>
+</html>

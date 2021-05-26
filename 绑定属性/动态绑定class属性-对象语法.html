@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  .red{
+      color: red;
+  }
+</style>
+<body>
+
+
+  <div id="app">
+
+    <!-- 动态绑定class属性 -->
+    <h2 :class="{red: isRed}">{{message}}</h2>
+    <button v-on:click="btnClick">换色</button>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "模板",
+      isRed: true
+    },
+    methods: {
+      btnClick: function (){
+        /*将isRed的值取反*/
+        this.isRed = !this.isRed;
+      }
+    }
+  })
+
+</script>
+
+
+
+</body>
+</html>

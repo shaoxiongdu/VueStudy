@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+    .red{
+        color: red;
+    }
+</style>
+<!--作业 点击列表哪一项 哪一项变红-->
+<body>
+
+  <div id="app">
+
+    <ul><!--v-on:click="btnClick(index)"-->
+      <li  :class="{red: index == isRedIndex}" v-on:click="click(index)" v-for="(movie,index) in movies">{{index + '-' + movie}}</li>
+    </ul>
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      movies: ['海王',"海尔兄弟","肖生客的救赎",'火影忍者'],
+      isRedIndex: 0
+    },
+    methods: {
+      click: function (index){
+        this.isRedIndex = index;
+      }
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
