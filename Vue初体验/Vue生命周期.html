@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue生命周期</title>
+</head>
+<body>
+
+    <div id="app">
+
+        {{message}}
+
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+    var app = new Vue({
+        /*绑定DOM元素*/
+        el: "#app",
+        data: {
+          message: "Vue 生命周期",
+          createTime: '',
+        },
+        /*Vue创建成功之后 自动调用此函数*/
+        create: function (){
+            console.log("create");
+        },
+        mounted: function (){
+            console.log("mounted");
+        }
+
+    })
+
+</script>
+
+</html>

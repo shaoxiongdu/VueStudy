@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <h1 v-once>{{message}}</h1>
+
+    <!--表示不随模块数据更新-->
+    <h1 v-once>{{message}}</h1>
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "你好"
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+
+</body>
+</html>

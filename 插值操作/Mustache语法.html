@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VueMustache语法</title>
+</head>
+<body>
+
+  <div id="app">
+    <h1>{{message}}</h1>
+    <h1>{{message}},李银河</h1>
+    <!--可以写表达式-->
+    <h1>{{firstName + " " +lastName}}</h1>
+    <h1>{{counter * 2}}</h1>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "模板",
+      firstName: 'kobe',
+      lastName: 'bryant',
+      counter: 100,
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>

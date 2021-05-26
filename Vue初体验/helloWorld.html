@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueHelloWorld</title>
+</head>
+<body>
+
+    <div id="app">
+
+        {{message}}
+
+        <h2 v-bind:title="title">鼠标悬浮此处显示动态绑定的标题信息！</h2>
+
+        <h2 v-if="seen">seen值为true时现在你看到我了</h2>
+        <ol>
+            <li v-for="book in books">
+                {{book}}
+            </li>
+        </ol>
+
+        <input type="text" v-model="message1">
+        <p>{{message1}}</p>
+        <input type="button" value="反转消息" v-on:click="reverseMessage">
+
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            title: '页面加载于 ' + new Date().toLocaleString(),
+            seen: false,
+            books: ['红楼梦','西游记','三国演义','水浒传'],
+            message1: 'hello world',
+        },
+        methods: {
+            reverseMessage: function (){
+                this.message1 = this.message1.split('').reverse().join('');
+            }
+        }
+    })
+
+
+</script>
+
+</html>
