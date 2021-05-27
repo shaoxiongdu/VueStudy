@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2 :style="getStyle()">{{message}}</h2>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world!",
+      finalSize: 200,
+      finalColor: 'red'
+    },
+    methods: {
+      getStyle: function (){
+        return {fontSize: this.finalSize + 'px', color: this.finalColor};
+      }
+    }
+  })
+
+</script>
+
+
+</body>
+</html>

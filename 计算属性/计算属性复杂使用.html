@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+</head>
+<body>
+
+  <div id="app">
+
+    <h2 class="title">{{message}}</h2>
+
+    <div  style="width: 600px;left:200px">
+
+      <table  border="1px" align="center">
+        <thead>
+        <tr>
+          <th>序号</th>
+          <th>书籍编号</th>
+          <th>书籍名称</th>
+          <th>价格</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr v-for="(book,index) in books">
+          <td>{{index+1}}</td>
+          <td>{{book.id}}</td>
+          <td>《{{book.name}}》</td>
+          <td>{{book.price + '￥'}}</td>
+        </tr>
+        <tr>
+          <td colspan="4" align="right">
+            总价：{{totalPrice}}￥
+            <button type="button" >结算</button>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+
+
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "新华书店",
+      books: [
+        {id: 1001,name: 'Unix编程艺术',price: 119},
+        {id: 1002,name: '计算机网络自顶向下',price: 159},
+        {id: 1003,name: '图解TCP/IP协议',price: 69},
+        {id: 1004,name: '深入理解计算机组成原理',price: 159},
+      ]
+    },
+    /*计算属性方式*/
+    computed: {
+      totalPrice: function (){
+        let result = 0;
+        for (let i = 0; i < this.books.length; i++) {
+          result += this.books[i].price;
+        }
+        return result;
+      }
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
