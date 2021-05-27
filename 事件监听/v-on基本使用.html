@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计数器</title>
+</head>
+<body>
+
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2>{{counter}}</h2>
+    <!--正常语法-->
+    <button v-on:click="increment">+</button>
+    <!--语法糖-->
+    <button @click="decrement">-</button>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      counter: 0
+    },
+    methods: {
+      increment(){
+        this.counter++;
+      },
+      decrement(){
+        this.counter--;
+      }
+
+    }
+  })
+
+</script>
+
+
+
+</body>
+</html>

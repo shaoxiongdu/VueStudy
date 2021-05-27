@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+  <h2>{{message}}</h2>
+
+  <!--不传参数 默认传递event参数-->
+  <button @click="btn1">不带参默认传递event</button>
+
+  <!--传递参数 也需要传递event 参数写$event就会传递浏览器创建的event对象-->
+  <button @click="btn2($event,123)">传递event+传递其他参数</button>
+
+</div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+
+    },
+    methods: {
+      <!--不传参数 默认传递event参数-->
+      btn1: function (event){
+        console.log(event);
+      },
+
+      <!--传递参数 也需要传递event 参数写$event就会传递浏览器创建的event对象-->
+      btn2: function (param1,param2){
+        console.log(param1); // 打印event对象
+        console.log(param2); // 打印123
+      }
+    }
+  })
+
+</script>
+
+
+
+
+</body>
+</html>

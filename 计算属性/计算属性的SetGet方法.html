@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2>{{fullName}}</h2>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      firstName: 'Kobe',
+      lastName: 'Bryant'
+    },
+    /*计算属性*/
+    computed: {
+
+      fullName:{
+        /*get方法*/
+        get: function (){
+          return this.firstName  + ' ' + this.lastName;
+          },
+        /*set方法*/
+        set: function (newValue){
+          const name = newValue.split(' ');
+          this.firstName = name[0];
+          this.lastName = name[1];
+        }
+      }
+
+    },
+    /*方法*/
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
