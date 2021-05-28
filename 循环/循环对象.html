@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+
+      <!--前写value 后写key-->
+      <p v-for="(value,key) in user">
+        {{key + ' : ' + value}}
+      </p>
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      user: {
+        name: '张三',
+        age: 18,
+        height: 188
+      }
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>

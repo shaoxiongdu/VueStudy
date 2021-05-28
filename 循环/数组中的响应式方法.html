@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <ul>
+      <li v-for="number in numbers">{{number}}</li>
+    </ul>
+    <button @click="btnMethod">按钮</button>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      numbers: ['1','2','3','4','5']
+    },
+    methods: {
+      btnMethod(){
+
+        /*响应式 删除尾部元素*/
+        this.numbers.pop();
+
+        /*响应式 尾部添加元素*/
+        this.numbers.push('6');
+
+        /*响应式 删除首部元素*/
+        this.numbers.shift();
+
+        /*响应式 首部添加元素*/
+        this.numbers.unshift('0');
+
+        /*响应式 增删改 第一个参数为起始位置 第二个参数为删除个数 之后为元素列表  */
+        this.numbers.splice();
+
+        /*响应式 排序*/
+        this.numbers.sort();
+
+        /* 响应式反转*/
+        this.numbers.reverse();
+
+      }
+    }
+  })
+
+</script>
+
+
+
+</body>
+</html>
