@@ -7,7 +7,22 @@
 <body>
 
   <div id="app">
-    <h2>{{message}}</h2>
+    <!--当条件为真 则显示-->
+    <h2 v-if="isShowMessage">{{message}}</h2>
+    <h2 v-else>否则显示</h2>
+
+    <div>
+      <h3>当前的分数:{{score}}</h3>
+      <h3 v-if="score > 80">优秀</h3>
+      <h3 v-else-if="score > 70">良好</h3>
+      <h3 v-else-if="score > 60">及格</h3>
+      <h3 v-else>不及格</h3>
+    </div>
+
+    <!--进阶写法-->
+    <div>
+      <h3>{{grade}}</h3>
+    </div>
   </div>
 
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
@@ -17,7 +32,22 @@
   const app = new Vue({
     el: "#app",
     data: {
-      message: "hello world !"
+      message: "hello world !",
+      isShowMessage: true,
+      score: 80
+    },
+    computed:{
+      grade: function (){
+        if(this.score > 80){
+          return "优秀"
+        }else if(this.score > 70){
+          return "良好"
+        }else if(this.score > 60){
+          return "及格"
+        }else {
+          return "不及格"
+        }
+      }
     },
     methods: {
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+
+    <span>
+
+      <span v-if="loginType=='phone'">
+        <label>手机号</label>
+        <input type="text" placeholder="请输入手机号" key="phone">
+        <input value="切换为邮箱" type="button" @click="changeLoginType('email')">
+      </span>
+
+      <span v-else-if="loginType == 'email'">
+         <label>邮箱</label>
+        <input type="text" placeholder="请输入邮箱" key="email1">
+        <input type="button" value="切换为手机号" @click="changeLoginType('phone')"></input>
+      </span>
+
+    </span>
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      loginType: 'phone'
+    },
+    methods: {
+      changeLoginType(loginType){
+        this.loginType = loginType;
+      }
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
