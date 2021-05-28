@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+
+    <!--.stop修饰符-->
+    <div @click="divMethod">
+      div部分
+      <!--如果不加stop修饰符 则divMethod方法也会执行-->
+      <!--加入.stop之后 只有点击div部分才会触发divMethod方法-->
+      <button @click.stop="btnMethod">触发btnMethod方法</button>
+
+    </div>
+    <br>
+
+    <!-- prevent 阻止默认事件 添加此修饰符 点击提交会调用指定方法 但是不提交表单 -->
+    <form action="http://www.baidu.com/api">
+      <input type="text">
+      <input type="submit" value="提交" @click.prevent="submitMethod">
+    </form>
+
+    <!--监听某个按键点击-->
+    <input type="text" @keyup.enter="enterUp">
+
+    <!--native 监听自定义组件-->
+    <shaoxiong @click.native="someMethod"></shaoxiong>
+
+    <!--once  只有效一次-->
+    <input type="button" @click.once="someMethod" value="第一次点击有效">
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      inputText: ''
+    },
+    methods: {
+      divMethod(){
+        console.log("divMethod");
+      },
+      btnMethod(){
+        console.log("btnMethod");
+      },
+      submitMethod(){
+        console.log("submitMethod");
+      },
+      enterUp(){
+        console.log("enterUp");
+        console.log(this.inputText)
+      },
+      someMethod(){
+        console.log("do some thing")
+      }
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
