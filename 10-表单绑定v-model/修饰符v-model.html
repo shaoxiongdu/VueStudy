@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+
+    <!--lazy修饰符 -->
+    <!--当失去焦点或者点击回车 才会将输入绑定到数据中-->
+    <input type="text" v-model.lazy="message">
+
+    <!--
+    number修饰符
+    希望输入类型为number
+    vue默认将输入更新到数据中时 会转换为string 加入.number会转换为数字类型
+    -->
+    <input type="text" v-model.number="age">
+    <h2>{{typeof(age)}}</h2>
+
+    <!--
+    trim修饰符
+    去除前后空格
+    -->
+    <input type="text" v-model.trim="name">
+    {{name}}
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      age: 18,
+      name: ''
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
