@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的购物车</title>
+
+  <!--css代码-->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div align="center" id="app">
+
+  <h1>购物车案例</h1>
+  <table >
+    <thead>
+    <tr align="center">
+      <th>序号</th>
+      <th>书籍编号</th>
+      <th>书籍名称</th>
+      <th>出版日期</th>
+      <th>价格</th>
+      <th>数量</th>
+      <th>操作</th>
+    </tr>
+
+    </thead>
+    <tbody >
+    <tr v-for="(book,index) in books" align="center">
+      <td>{{index + 1}}</td>
+      <td>{{book.id}}</td>
+      <td>{{ '《' + book.name + '》'}}</td>
+      <td>{{book.publicationDate}}</td>
+      <td>{{book.price | showPrice}}</td>
+      <td>
+        <input type="button" value="-" @click="decrement(index)" v-bind:disabled="book.quantity <= 1">
+        {{book.quantity}}
+        <input type="button" value="+" @click="increment(index)">
+
+      </td>
+      <td><button type="button" id="removeBookButton" @click="remove(index)">移除</button></td>
+    </tr>
+
+    <tr align="right">
+      <th colspan="7" >
+        <div class="rightText">
+          总价格:{{totalPrice | showPrice}}
+        </div>
+
+      </th>
+    </tr>
+    </tbody>
+
+  </table>
+
+</div>
+
+  <!-- vue 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <!--js代码-->
+  <script src="./main.js"></script>
+
+</body>
+</html>
