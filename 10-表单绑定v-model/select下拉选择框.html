@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+
+    <!--只选择一个-->
+    <label>
+      <select v-model="city" name="fromCity">
+        <option disabled>请选择</option>
+        <option value="山西">山西</option>
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+      </select>
+    </label>
+    <label>
+      选择的城市: {{city}}
+    </label>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--多选-->
+    <label>
+      <select v-model="citys"  multiple>
+        <option disabled>请选择</option>
+        <option value="山西">山西</option>
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+      </select>
+    </label>
+    <label>
+      选择的城市有: {{citys}}
+    </label>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+      city: '请选择',
+      citys: []
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
