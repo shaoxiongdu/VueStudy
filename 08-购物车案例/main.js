@@ -13,11 +13,16 @@ const app = new Vue({
   computed: {
     totalPrice: function (){
       let totalPrice = 0;
-      for(let book of this.books){
+      /*之前的写法*/
+      /*for(let book of this.books){
         totalPrice += book.price * book.quantity;
       }
-      return totalPrice;
-    },
+      return totalPrice;*/
+      /*高级写法*/
+      return this.books.reduce(function (preValue,book) {
+        return preValue + book.price * book.quantity;
+      },0);
+    }
   },
   methods: {
     increment(index){

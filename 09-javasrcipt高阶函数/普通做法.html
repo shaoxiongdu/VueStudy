@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>普通做法实现三个需求</title>
+</head>
+<body>
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <button @click="someThing">普通做法实现需求</button>
+</div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "hello world !",
+    },
+    methods: {
+
+      someThing:function (){
+
+        let numbers = [10,20,30,40,50,60,70,80]
+        /*
+        需求1
+          求出大于五十的数字
+        需求2
+          大于50的数字乘2
+        需求3
+          需求2的结果总和
+        */
+
+        /*之前的做法--------------------------------------------------------*/
+        let newNumber = [];
+        for(number of numbers){
+          if(number > 50){
+            newNumber.push(number);
+          }
+        }
+        let newNumber2 = [];
+        for(number of newNumber){
+          newNumber2.push(number * 2);
+        }
+        let total = 0;
+        for(number of newNumber2){
+          total += number;
+        }
+        /*此时 result为需求三的结果*/
+        alert('普通做法结果' + total);
+
+      }
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
