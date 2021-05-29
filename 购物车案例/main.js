@@ -13,8 +13,8 @@ const app = new Vue({
   computed: {
     totalPrice: function (){
       let totalPrice = 0;
-      for(let index = 0; index < this.books.length; index++){
-        totalPrice += this.books[index].price * this.books[index].quantity;
+      for(let book of this.books){
+        totalPrice += book.price * book.quantity;
       }
       return totalPrice;
     },
