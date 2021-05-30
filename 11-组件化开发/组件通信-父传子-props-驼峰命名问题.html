@@ -1,0 +1,67 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件通信-父传子-props-驼峰命名问题</title>
+</head>
+<body>
+
+
+  <div id="app" align="center">
+
+    <son :c-message="message" :c-info="info"></son>
+
+  </div>
+
+  <template id="sontemplate" >
+    <div>
+      <h1>子组件</h1>
+      <h1>{{cMessage}}</h1>
+      <h1>{{cInfo}}</h1>
+    </div>
+  </template>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  const son = {
+    template: '#sontemplate',
+    props: {
+      cMessage: String,
+      cInfo:{
+        type: Object,
+        default(){
+          return {}
+        },
+      }
+    }
+  }
+
+  //创建Vue实例
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello Vue !",
+      info: {
+        name: 'dsx',
+        age: 20,
+        height: 178
+      }
+    },
+    components:{
+      son,
+    }
+  })
+
+</script>
+
+
+
+</body>
+</html>

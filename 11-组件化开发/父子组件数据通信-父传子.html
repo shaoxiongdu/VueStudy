@@ -72,7 +72,9 @@
            /*属性类型*/
            type: Array,
            /*默认值*/
-           default: [],
+           default(){
+             return []
+           },
            /*必须的 如果没有指定属性 会报错*/
            required: true
          },
