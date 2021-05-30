@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app" align="center">
+    <h2>{{message}}</h2>
+    <cpn></cpn>
+    <cpn1></cpn1>
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  //注册全局组件
+  Vue.component('cpn',{
+    template: `
+    <div>
+    <p>全局组件</p>
+</div>
+    `
+  })
+
+  //创建Vue实例
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello Vue !"
+    },
+    /*注册局部组件*/
+    components: {
+      cpn1: {
+        template:  `
+          <div>
+            <p>局部组件</p>
+          </div>
+        `
+      }
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>

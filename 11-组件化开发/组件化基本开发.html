@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件化的基本开发</title>
+</head>
+<body>
+
+  <div align="center" id="app">
+
+    <h2>{{message}}</h2>
+
+    <!--导航栏-->
+    <!--使用组件-->
+    <div>
+      <navbar></navbar>
+      <navbar></navbar>
+      <navbar></navbar>
+    </div>
+
+  </div>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  /*
+  *  创建组件构造器对象 参数 : 模板
+  * */
+  const navBarConstructor = Vue.extend({
+    template: `<div style="background-color: #41B883;">
+        <a href="" style="font-size: 50px;color: #333333">首页</a>
+        <a href="" style="font-size: 50px;color: #333333">快速启动</a>
+        <a href="" style="font-size: 50px;color: #333333">关于我们</a>
+        <a href="" style="font-size: 50px;color: #333333">联系我们</a>
+      </div>`
+  });
+
+  //注册组件
+  Vue.component('navbar',navBarConstructor);
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello Vue !"
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
