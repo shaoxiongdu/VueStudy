@@ -1,0 +1,92 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>父子组件数据通信</title>
+</head>
+
+<body>
+
+  <div id="app" align="center">
+    <h1>Root组件（Vue实例）</h1>
+    <h2>{{message}}</h2>
+    <h3>{{movies}}</h3>
+    <hr>
+
+    <!--* 通过props将数据从父组件传递过来
+       * 需要在使用的地方绑定 用格式
+       *  v-bind:子属性名 = '父属性名'-->
+    <son :son-movies="movies" :son-message="message"></son>
+
+  </div>
+
+
+
+  <template id="cpn">
+    <div>
+      <h1>子组件</h1>
+      <h2>{{sonMessage}}</h2>
+      <ul>
+        <h2><li v-for="(item,index) in sonMovies">
+          {{ item }}
+        </li>
+        </h2>
+      </ul>
+    </div>
+  </template>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  //创建Vue实例 Root组件
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello Vue !",
+      movies: ['海贼王','海尔兄弟','海王']
+    },
+
+    /*Root组件(Vue实例)的子组件*/
+    components: {
+      /*注册子组件*/
+     son: {
+       template: '#cpn',
+       /*通过props方法 将父组件的数据传递过来
+       *  需要在使用组件时 用 v-bind:子属性名 = '父属性名' 绑定
+       * */
+
+       /* 1. 传递参数为数组  值为子组件的属性名
+       props: ['sonMovies','sonMessage'],*/
+
+       /*
+       * 2. 参数为对象 Key为子组件的属性名 value为属性对象
+       * */
+       props: {
+         sonMovies: {
+           /*属性类型*/
+           type: Array,
+           /*默认值*/
+           default: [],
+           /*必须的 如果没有指定属性 会报错*/
+           required: true
+         },
+         sonMessage: {
+           type: String,
+           default: '未指定'
+         }
+       }
+
+     }
+    }
+  })
+
+</script>
+
+</body>
+</html>
