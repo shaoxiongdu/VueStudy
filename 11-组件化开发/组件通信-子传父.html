@@ -1,0 +1,94 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件通信-子传父</title>
+</head>
+<body>
+
+
+  <div id="app" >
+
+    <h1>父组件</h1>
+    <h2>message = {{message}}</h2>
+    <!--取出子组件传递的数据-->
+    <h2>当前选择的元素是 ： id={{currentItem.id}},name={{currentItem.name}}</h2>
+    <hr>
+
+    <!--使用子组件 监听get方法-->
+    <son v-on:send="get"></son>
+  </div>
+
+  <!--子组件模板-->
+  <template id="sontemplate" >
+    <div>
+      <h1>子组件</h1>
+      <ul>
+        <h1>123</h1>
+        <button v-for="item in categories" @click="buttonClick(item)">
+          {{item.name}}
+        </button>
+      </ul>
+    </div>
+  </template>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  /*子组件构造器*/
+  const son = {
+    template: '#sontemplate',
+    data(){
+      return {
+        /*类别数据*/
+        categories: [
+          {id: '1',name: '热门推荐'},
+          {id: '2',name: '手机数码'},
+          {id: '3',name: '家电'},
+          {id: '4',name: '电脑办公'},
+          {id: '5',name: '计生用品'},
+        ]
+      }
+    },
+    methods: {
+      buttonClick(item){
+        /*调用此方法 将数据传输给父组件
+        需要父组件手动监听
+        * 参数1 事件名（方法名）
+        * 参数2 事件参数（传递的数据）
+        * */
+        console.log('buttonClick is run ');
+        this.$emit('send',item);
+      }
+    }
+  }
+
+  //创建Vue实例
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello Vue !",
+      currentItem: {}
+    },
+    /*注册子组件*/
+    components: {
+      son,
+    },
+    methods: {
+      /*监听到传过来的事件发生之后 执行的方法*/
+      get(item){
+        this.currentItem = item;
+      }
+    }
+  })
+
+</script>
+
+
+</body>
+</html>

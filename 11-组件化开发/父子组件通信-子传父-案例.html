@@ -1,0 +1,87 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+  -->
+
+
+<!--
+    需求
+
+    1.子组件中有一个计数的值，需要在子组件中显示
+    2.并且有两个按钮 + - 可操作这个值
+    3.同时需要在父组件中显示这个计数的值
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>父子组件通信-子传父-案例</title>
+</head>
+<body>
+
+
+  <div id="app">
+    <h1>父组件</h1>
+    <h2>从子组件传递过来的counter值: {{counter}}</h2>
+    <hr>
+    <son v-on:change="updateCounter"></son>
+  </div>
+
+  <template id="sontemplate" >
+    <div>
+      <h1>子组件</h1>
+      <h2 >自己组件中的counter值: {{counter}}</h2>
+      <button @click="increment">+</button>
+      <button @click="decrement">-</button>
+    </div>
+  </template>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  /*子组件构造器*/
+  const son = {
+    template: '#sontemplate',
+    data(){
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      increment(){
+        this.counter++;
+        this.$emit('change',this.counter);
+      },
+      decrement(){
+        this.counter--;
+        this.$emit('change',this.counter);
+      }
+    }
+  }
+
+
+  const app = new Vue({
+    el: '#app',
+    components: {
+      /*注册子组件到父组件中*/
+      son,
+    },
+    data: {
+      counter: 0
+    },
+    methods: {
+      updateCounter(counter){
+        /*console.log('updateCounter counter = ' + counter)*/
+
+        this.counter = counter;
+      }
+    }
+  });
+
+
+</script>
+
+</body>
+</html>
