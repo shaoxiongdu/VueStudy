@@ -1,0 +1,64 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>子访问父</title>
+</head>
+<body>
+
+<div id="app">
+
+  <h1>父组件</h1>
+  <hr>
+  <cpn></cpn>
+</div>
+
+
+<template id="cpn">
+  <div>
+    <h2>子组件</h2>
+    <button @Click="getParentName">访问父组件属性</button>
+  </div>
+</template>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  const app = new Vue({
+    el: "#app",
+    data: {
+      name: '张三'
+    },
+    /*子组件*/
+    components: {
+      cpn: {
+        template: '#cpn',
+        methods: {
+          getParentName(){
+            /*
+            * 通过this.$parent访问父组件
+            * */
+            console.log(this.$parent.name)
+
+            /*通过$.root 访问根组件*/
+            console.log(this.$root.name)
+          }
+        }
+      }
+    }
+  })
+
+</script>
+
+
+
+
+
+</body>
+</html>

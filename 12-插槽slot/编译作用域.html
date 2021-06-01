@@ -1,0 +1,59 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+
+  结论：
+
+    父组件模板里的东西会在父级作用域中编译
+    子组件模板里的东西会在子级作用域中编译
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <cpn></cpn>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+
+    <!--会显示  默认使用vue实例中的值-->
+    <cpn v-show="isShow"> </cpn>
+  </div>
+
+<template id="cpn">
+  <div>
+    <h2>子组件</h2>
+    <h2>内容</h2>
+  </div>
+</template>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello World!",
+      isShow: true
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        data(){
+          return {
+            isShow: false
+          }
+        }
+      }
+    },
+  })
+
+</script>
+
+
+</body>
+</html>

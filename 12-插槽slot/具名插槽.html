@@ -1,0 +1,60 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <h2>父组件</h2>
+    <h2>{{message}}</h2>
+    <hr>
+
+    <!--使用组件-->
+    <cpn>
+      <span :slot="left">返回</span>
+      <input v-slot="center" type="text" placeholder="搜索..." />
+      <span :slot="right">···</span>
+    </cpn>
+
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>子组件</h2>
+      <!--设置插槽1-->
+      <slot v-slot="left"><span>左侧</span></slot>
+      <!--设置插槽1-->
+      <slot v-slot="center"><span>中间</span></slot>
+      <!--设置插槽1-->
+      <slot v-slot="right"><span>右侧</span></slot>
+    </div>
+
+  </template>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello World!"
+    },
+    components: {
+      cpn: {
+        template: '#cpn'
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

@@ -12,9 +12,18 @@
 
 
   <div id="app">
-    <h2>{{message}}</h2>
-  </div>
 
+    <button @Click="btnClick">调用子组件的showMessage方法</button>
+
+    <hr>
+
+    <cpn ref="son1"/>
+
+    <cpn ref="son2"/>
+
+    <cpn ref="son3"/>
+
+  </div>
 
   <template id="cpn">
     <div>
@@ -28,20 +37,33 @@
 
   const app = new Vue({
     el: "#app",
-    data: {
-      message: "Hello World!"
-    },components: {
+    methods: {
+      btnClick(){
+        /*通过this.$children[组件下标] 访问子组件*/
+        /*this.$children[0].showMessage();
+        alert(this.$children[0].name)*/
+
+        /*
+        * 通过给子组件添加ref属性 然后用$.refs.<子组件ref值>取子组件的值
+        * */
+        console.log(this.$refs.son1.name);
+      }
+    },
+    /*子组件*/
+    components: {
       cpn: {
         template: '#cpn',
+        data(){
+          return {
+            name: '子组件属性'
+          }
+        },
         methods: {
           showMessage(){
-
+            alert("show message is run !");
           }
         }
       }
-    },
-    methods: {
-
     }
   })
 
