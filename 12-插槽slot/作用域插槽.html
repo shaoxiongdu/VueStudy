@@ -1,0 +1,74 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<shaoxiongdu.dev@gmail.com>  All Rights Reserved
+
+  父组件替换插槽的标签 ，内容由子组件提供
+
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2>{{message}}</h2>
+    <hr>
+    <!--使用默认模板显示数据-->
+    <cpn></cpn>
+
+    <!--使用自定义模板显示数据-->
+    <cpn >
+      <!--通过slot-scope.data指令 获取模板中slot-->
+      <template slot-scope="slot">
+        <!--通过slot.data 获取绑定的数据-->
+        <span>{{slot.data.join(' + ')}}</span>
+      </template>
+    </cpn>
+
+  </div>
+
+  <!--子组件模板-->
+  <template id="cpn">
+    <div>
+      <h2>子组件</h2>
+      <!--插槽占位 指定此solt中的data属性为自己组件的data中的属性language-->
+      <slot :data="this.language">
+        <ul>
+          <li v-for="item in language">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  const app = new Vue({
+    el: "#app",
+    data: {
+      message: "Hello World!"
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        data(){
+          return {
+            language: ['Java','JavaScript','Python','C/C++','C#','Swift']
+          }
+        }
+      }
+    },
+    methods: {
+
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
