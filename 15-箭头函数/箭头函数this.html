@@ -1,0 +1,55 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<dev@shaoxiongdu.cn>  All Rights Reserved
+
+  StackOverFlow
+
+  箭头函数中的this引用如何查找？
+
+    向外层作用域中查找最近的this
+
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>箭头函数this</title>
+</head>
+<body>
+
+<script>
+
+  /**
+   * 什么时候用箭头函数?
+   * 当某个方法的参数是另一个方法的时候
+   */
+  setTimeout( () => {
+    console.log(this) //window
+  },1000);
+
+
+  /**
+   * this的作用域
+   * @type {{aaa(): void}}
+   */
+  const object = {
+
+    aaa(){
+      setTimeout(function (){
+       console.log(this) // window
+
+        setTimeout(()=>{
+          console.log(this) //obj对象
+        });
+      })
+    },
+
+
+
+  }
+
+
+</script>
+
+</body>
+</html>

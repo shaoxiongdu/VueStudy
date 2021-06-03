@@ -1,0 +1,49 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<dev@shaoxiongdu.cn>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  const obj = {
+
+    /*之前定义函数的方式*/
+    sun(num1, num2) {
+      return num1 + num2;
+    }
+  }
+
+    /*
+    箭头函数定义的方式
+    fun = (参数列表) => {方法体}
+    */
+
+  /**
+   * 两个参数的箭头函数
+   * */
+    const multiplication = (number1, number2) => {
+      return number1 * number2;
+    }
+
+    /**
+    * 一个参数的箭头函数 参数列表的括号可以省略
+    * */
+  const power = number => { return number * number }
+
+  /**
+   * 代码块中只有一行代码  则{}可以省略 将一行代码的值返回
+   */
+  const increment = (number) => number + 1;
+
+
+  console.log(increment(1)); //2
+
+</script>
+</body>
+</html>
