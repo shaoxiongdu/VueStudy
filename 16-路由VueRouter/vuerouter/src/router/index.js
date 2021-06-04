@@ -7,36 +7,61 @@ import VueRouter from "vue-router";
 
 import Vue from "vue";
 
-import Home from "../components/Home";
-import About from "../components/About";
+/**
+ * 路由懒加载  用到的时候 在加载  提升首页响应速度
+ * */
+const Home = () => import('../components/Home')
+const About = () => import('../components/About')
+const User = () => import('../components/User')
+const HomeNews = () => import('../components/HomeNews')
+const HomeMessage = () => import('../components/HomeMessage')
 
 /*通过Vue.use使用插件*/
 Vue.use(VueRouter);
 
 /*配置映射关系*/
 const routes = [
+
+  /*默认路由*/
   {
     path: '/',
     redirect: '/home',
   },
+
+    /*懒加载*/
   {
     path: '/home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: 'news',
+        component: HomeNews
+      },
+      {
+        path: 'message',
+        component: HomeMessage
+      }
+    ]
   },
   {
     path: '/about',
     component: About
+  },
+    /*动态路由*/
+  {
+    path: '/user/:userCode',
+    component: User
   }
 ]
 
-/*创建router对象*/
+/*创建router路由对象*/
 const router = new VueRouter({
 
   /*配置映射关系*/
   routes,
   /*设置为history*/
   mode: 'history',
-  /*处于活跃的加入此类*/
+  /*处于活跃的加入此类属性*/
   linkActiveClass: 'active'
 });
 
