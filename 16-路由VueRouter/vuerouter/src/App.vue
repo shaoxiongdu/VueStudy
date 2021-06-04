@@ -39,7 +39,6 @@ export default {
     profileBtn(){
       /**
        * 调用push 参数为一个对象
-       * path为路径
        * 其中key为query的值 会添加到url的参数列表中 类似get方式
        */
       this.$router.push({

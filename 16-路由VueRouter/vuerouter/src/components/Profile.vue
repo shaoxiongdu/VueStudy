@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  name: "Profile"
+  name: "Profile",
+  /*created() {
+    document.title = '档案'
+  },*/
 }
 </script>
 

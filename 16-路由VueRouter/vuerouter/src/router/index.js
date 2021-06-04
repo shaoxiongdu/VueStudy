@@ -26,24 +26,36 @@ const routes = [
   {
     path: '/',
     redirect: '/home',
+    /*元数据*/
+    meta: {
+      title: '首页'
+    }
   },
   {
     path: '/profile',
-    component: Profile
+    component: Profile,
+    /*元数据*/
+    meta: {
+      title: '档案'
+    }
   },
     /*懒加载*/
   {
     path: '/home',
     component: Home,
+    /*元数据*/
+    meta: {
+      title: '首页'
+    },
     /*嵌套路由*/
     children: [
       {
         path: '',
-        component: HomeNews
+        component: HomeNews,
       },
       {
         path: 'news',
-        component: HomeNews
+        component: HomeNews,
       },
       {
         path: 'message',
@@ -53,12 +65,25 @@ const routes = [
   },
   {
     path: '/about',
-    component: About
+    component: About,
+    /*元数据*/
+    meta: {
+      title: '关于'
+    },
+    /*路由独享前置钩子函数*/
+    beforeEach: (to,from,next) => {
+      alert('to about page');
+      next();
+    }
   },
     /*动态路由*/
   {
     path: '/user/:userCode',
-    component: User
+    component: User,
+    /*元数据*/
+    meta: {
+      title: '用户'
+    }
   }
 ]
 
@@ -72,5 +97,23 @@ const router = new VueRouter({
   /*处于活跃的加入此类属性*/
   linkActiveClass: 'active'
 });
+
+/**
+ * 设置全局守卫
+ *    前置钩子函数（hook）(路由跳转之前调用)
+ * beforeEach方法参数: 一个方法(三个参数:to,from,next)
+ *
+ * */
+router.beforeEach((to,from,next) => {
+  /*设置标题*/
+  document.title = to.matched[0].meta.title;
+  next();
+
+});
+
+/**
+ * 后置钩子函数 (路由跳转之后调用)
+ */
+router.afterEach((to,from) => {})
 
 export default router
