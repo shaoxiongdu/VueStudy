@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <div id="nav" align="center">
-      <router-link   replace  to="/home">首页</router-link>
+      <router-link to="/home">首页</router-link>
       &nbsp;
-      <router-link   replace to="/about">关于</router-link>
+      <router-link to="/about">关于</router-link>
       &nbsp;
-      <router-link  replace v-bind:to="/user/+userCode">用户</router-link>
+      <router-link :to="/user/+userCode">用户</router-link>
+      &nbsp;
+      <router-link :to="{path: '/profile',query: {name: 'dsx',age: 22}}">档案</router-link>
       &nbsp;&nbsp;
       <button @click="home">通过代码跳转首页</button>
       &nbsp;
@@ -22,7 +24,9 @@ export default {
   name: 'App',
   data(){
     return{
-      userCode: '171648234'
+      userCode: '171648234',
+      name: 'dsx',
+      age: 22,
     }
   },
   methods: {

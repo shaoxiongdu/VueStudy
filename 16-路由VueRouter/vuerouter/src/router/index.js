@@ -15,7 +15,7 @@ const About = () => import('../components/About')
 const User = () => import('../components/User')
 const HomeNews = () => import('../components/HomeNews')
 const HomeMessage = () => import('../components/HomeMessage')
-
+const Profile = () => import('../components/Profile')
 /*通过Vue.use使用插件*/
 Vue.use(VueRouter);
 
@@ -27,12 +27,20 @@ const routes = [
     path: '/',
     redirect: '/home',
   },
-
+  {
+    path: '/profile',
+    component: Profile
+  },
     /*懒加载*/
   {
     path: '/home',
     component: Home,
+    /*嵌套路由*/
     children: [
+      {
+        path: '',
+        component: HomeNews
+      },
       {
         path: 'news',
         component: HomeNews
