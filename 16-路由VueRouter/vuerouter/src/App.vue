@@ -9,6 +9,8 @@
       &nbsp;
       <router-link :to="{path: '/profile',query: {name: 'dsx',age: 22}}">档案</router-link>
       &nbsp;&nbsp;
+      <button @click="profileBtn">通过代码跳转到档案</button>
+
       <button @click="home">通过代码跳转首页</button>
       &nbsp;
       <button @click="about">通过代码跳转关于</button>
@@ -25,11 +27,26 @@ export default {
   data(){
     return{
       userCode: '171648234',
-      name: 'dsx',
-      age: 22,
+      user: {
+        name: 'dsx',
+        age: 22,
+      }
     }
   },
   methods: {
+
+    /*通过函数实现参数传递*/
+    profileBtn(){
+      /**
+       * 调用push 参数为一个对象
+       * path为路径
+       * 其中key为query的值 会添加到url的参数列表中 类似get方式
+       */
+      this.$router.push({
+        path: '/profile',
+        query: this.user
+      })
+    },
     /**
      * 通过方法实现路由跳转
      */
