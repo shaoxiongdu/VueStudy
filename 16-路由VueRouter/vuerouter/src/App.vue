@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+
     <div id="nav" align="center">
+
       <router-link to="/home">首页</router-link>
       &nbsp;
       <router-link to="/about">关于</router-link>
@@ -9,13 +11,17 @@
       &nbsp;
       <router-link :to="{path: '/profile',query: {name: 'dsx',age: 22}}">档案</router-link>
       &nbsp;&nbsp;
-      <button @click="profileBtn">通过代码跳转到档案</button>
+      <button @click="profileBtn">通过代码跳转到档案页面</button>
 
       <button @click="home">通过代码跳转首页</button>
       &nbsp;
       <button @click="about">通过代码跳转关于</button>
 
-      <router-view/>
+<!--     保证路由跳转时 组件会被缓存 而不是频繁创建销毁  加快性能  exclude为排除元素-->
+      <keep-alive exclude="Profile,User">
+        <router-view/>
+      </keep-alive>
+
     </div>
 
   </div>

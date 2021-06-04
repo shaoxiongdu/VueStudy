@@ -101,7 +101,7 @@ const router = new VueRouter({
 /**
  * 设置全局守卫
  *    前置钩子函数（hook）(路由跳转之前调用)
- * beforeEach方法参数: 一个方法(三个参数:to,from,next)
+ * beforeEach方法参数: 前置方法(三个参数:to,from,next)
  *
  * */
 router.beforeEach((to,from,next) => {

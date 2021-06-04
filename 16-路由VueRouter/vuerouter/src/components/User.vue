@@ -25,7 +25,30 @@ export default {
       /**取得当前活跃的路由对象*/
       return this.$route.params.userCode;
     }
-  }
+  },
+  created() {
+    console.log(' User 创建')
+  },
+  /**销毁前回调*/
+  destroyed() {
+    console.log('User 被销毁');
+  },
+  /**
+   * 处于活跃前 回调 必须使用keep-alive才会被调用
+   * */
+  activated() {
+    console.log('User 活跃状态');
+    this.$router.push(this.currentPath)
+        .catch(err => {})
+  },
+  /**
+   * 必须使用keep-alive才会被调用
+   * */
+  deactivated() {
+    console.log('User 非活跃状态');
+  },
+
+
 }
 </script>
 
