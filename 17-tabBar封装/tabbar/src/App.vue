@@ -1,22 +1,76 @@
-<template>
+<template >
   <div id="app">
+    <tab-bar>
+      <tab-bar-item>
+        <template v-slot:item-icon>
+          <img  src="./assets/img/tabbar/home.svg" alt="">
+        </template>
+        <template v-slot:item-icon-active>
+          <img  src="./assets/img/tabbar/home-active.svg" alt="">
+        </template>
+        <template v-slot:item-text>
+          <div>
+            首页
+          </div>
+        </template>
 
-    <router-view/>
+      </tab-bar-item>
 
-    <div id="tab-bar">
+      <tab-bar-item>
+        <template v-slot:item-icon>
+          <img  src="./assets/img/tabbar/type.svg" alt="">
+        </template>
+        <template v-slot:item-icon-active>
+          <img  src="./assets/img/tabbar/type-active.svg" alt="">
+        </template>
+        <template v-slot:item-text>
+          <div>
+            分类
+          </div>
+        </template>
+      </tab-bar-item>
 
-      <div class="tab-bar-item">首页</div>
-      <div class="tab-bar-item">分类</div>
-      <div class="tab-bar-item">购物车</div>
-      <div class="tab-bar-item">我的</div>
+      <tab-bar-item>
+        <template v-slot:item-icon>
+          <img  src="./assets/img/tabbar/shopping-cart.svg" alt="">
+        </template>
+        <template v-slot:item-icon-active>
+          <img  src="./assets/img/tabbar/shopping-cart-active.svg" alt="">
+        </template>
+        <template v-slot:item-text>
+          <div>
+            购物车
+          </div>
+        </template>
+      </tab-bar-item>
 
-    </div>
+      <tab-bar-item>
+        <template v-slot:item-icon>
+          <img  src="./assets/img/tabbar/user.svg" alt="">
+        </template>
+        <template v-slot:item-icon-active>
+          <img  src="./assets/img/tabbar/user-active.svg" alt="">
+        </template>
+        <template v-slot:item-text>
+          <div>
+            我的
+          </div>
+        </template>
+      </tab-bar-item>
+    </tab-bar>
   </div>
 </template>
 
 <script>
+
+  import TabBar from "./components/tabbar/TabBar";
+  import TabBarItem from "./components/tabbar/TabBarItem";
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    TabBar,
+    TabBarItem
+  }
 }
 </script>
 
@@ -25,29 +79,4 @@ export default {
 /*引入样式文件*/
   @import "./assets/css/base.css";
 
-/*导航栏样式*/
-  #tab-bar{
-    display: flex;
-    /*背景*/
-    background-color: #F6F6F6;
-
-    /*绝对位置*/
-    position: fixed;
-    right: 0;
-    left: 0;
-    bottom: 0;
-
-    /*阴影*/
-    box-shadow: 0px -1px 1px rgba(100,100,100,0.2);
-  }
-
-/*导航栏元素样式*/
-  .tab-bar-item{
-
-    flex: 1;
-    /*文字居中*/
-    text-align: center;
-    height: 49px;
-
-  }
 </style>
