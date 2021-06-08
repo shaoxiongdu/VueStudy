@@ -1,0 +1,68 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<dev@shaoxiongdu.cn>  All Rights Reserved
+
+  需求： 第一次网络请求的结果aaa自己处理10行
+        第二次处理： 拼接111 自己处理10行
+        第三次处理 拼接222 自己处理10行
+
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise链式调用</title>
+</head>
+<body>
+<script>
+  /*new Promise((resolve, reject) => {
+
+    //模拟第一次网络请求
+    setTimeout(() => {
+      let data = 'aaa';
+      resolve(data)
+    },1000)
+
+
+  }).then( (data) => {
+        console.log(data,'第一层10行处理代码');
+
+        new Promise((resolve) =>{
+          resolve(data + '111');
+        }).then((data)=>{
+          console.log(data,'第二层10行处理')
+
+          new Promise(resolve => {
+            resolve(data + '222');
+          }).then(data => {
+            console.log(data,'第三层10行处理')
+          })
+        })
+    })*/
+
+
+/**
+ * 简写 省略new Promise
+ */
+new Promise((resolve, reject) => {
+
+  //模拟第一次网络请求
+  setTimeout(() => {
+    let data = 'aaa';
+    resolve(data)
+  },1000)
+
+}).then( (data) => {
+  console.log(data,'第一层10行处理代码');
+
+  return data + '111'
+  }).then((data)=>{
+    console.log(data,'第二层10行处理')
+
+    return data + '222';
+    }).then(data => {
+      console.log(data,'第三层10行处理')
+})
+</script>
+</body>
+</html>

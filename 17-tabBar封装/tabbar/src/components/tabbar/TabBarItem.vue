@@ -3,19 +3,21 @@
   -->
 
 <template>
-  <div class="tab-bar-item">
+  <div class="tab-bar-item" @click="itemClick">
 
-    <div v-if="!isActive" >
-      <slot name="item-icon"></slot>
+<!-- 活跃icon   -->
+    <div v-if="isActive" >
+      <slot name="item-icon-active"></slot>
     </div>
 
+<!-- 非活跃ICON   -->
     <div v-else>
-      <slot  name="item-icon-active"></slot>
+      <slot  name="item-icon"></slot>
     </div>
 
-
-    <div :class="{active: isActive}">
-      <slot  name="item-text"></slot>
+<!-- 文本   -->
+    <div :style="activeStyle">
+      <slot name="item-text"></slot>
     </div>
   </div>
 </template>
@@ -23,9 +25,27 @@
 <script>
 export default {
   name: "TabBarItem",
-  data(){
-    return{
-      isActive: true
+  computed: {
+    isActive() {
+        return this.$route.path === (this.path);
+    },
+    activeStyle() {
+      return this.isActive ? {color: this.activeColor} : {}
+    }
+  },
+  props: {
+    path: {
+      type: String,
+      default: ''
+    },
+    activeColor:{
+      type: String,
+      default: 'deepPink'
+    }
+  },
+  methods: {
+    itemClick(){
+      this.$router.replace(this.path).catch( err => '');
     }
   }
 }
@@ -50,7 +70,4 @@ export default {
   vertical-align: middle;
 }
 
-.active{
-  color: red;
-}
 </style>

@@ -1,0 +1,33 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<dev@shaoxiongdu.cn>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  new Promise((resolve, reject) => {
+
+    //一些异步操作(网络请求) 网络请求成功 手动调用resolve 会回调then中的第一个函数
+    // 传入网络请求响应的data
+    //resolve('hello world')
+
+    //当异步操作网络请求失败 手动执行reject 会回调then的第二个函数
+    //会回调catch执行
+    reject('error message');
+
+    /*then有两个参数 第一个参数函数为手动调用resolve时执行 第二个参数函数为手动调用reject时执行*/
+  }).then((data) => {
+    //doSomeThing
+    //此处处理网路请求回来的data
+    alert('success: ' + data)
+  },(err) => {
+    alert('error: ' + err)
+  })
+</script>
+</body>
+</html>

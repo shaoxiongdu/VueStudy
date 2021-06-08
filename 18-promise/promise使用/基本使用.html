@@ -1,0 +1,50 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<dev@shaoxiongdu.cn>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise基本使用</title>
+</head>
+<body>
+
+<script>
+
+  //使用setTime模拟网络请求
+  /*setTimeout(() => {
+    alert('hello world')
+  },1000);
+*/
+
+  //什么情况会用promise
+  // 异步操作
+  /**
+   * Promise构造函数需要一个参数 这个参数是一个b函数 b函数需要两个参数 resolve reject
+   *  执行流程：
+   * Promise构造函数 -> 执行参数中的函数b(resolve,reject)
+   *
+   */
+  new Promise((resolve, reject) => {
+
+    //一些异步操作(网络请求) 网络请求成功 手动调用resolve 会回调then
+    // 传入网络请求响应的data
+    //resolve('hello world')
+
+    //当异步操作失败 手动执行reject
+    //会回调catch执行
+    reject('error message');
+
+  }).then((data) => {
+    //doSomeThing
+    //此处处理网路请求回来的data
+    alert(data)
+  }).catch((err) => {
+    alert(err)
+  })
+
+</script>
+
+</body>
+</html>

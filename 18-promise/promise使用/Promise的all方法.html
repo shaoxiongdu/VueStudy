@@ -1,0 +1,40 @@
+<!--
+  ~ CopyRight (c) 2021 ShaoxiongDu<dev@shaoxiongdu.cn>  All Rights Reserved
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promise</title>
+</head>
+<body>
+<script>
+
+
+  /**
+   * 当参数中的所有promise都完成 才会回调then 也就是3s之后
+   */
+  Promise.all([
+      new Promise((resolve, reject) => {
+        //异步操作
+        setTimeout( () => {
+          resolve('result1');
+        },1000)
+      }),
+      new Promise((resolve, reject) => {
+        //异步操作
+        setTimeout( () => {
+          resolve('result2');
+        },3000)
+      })
+  ]).then(( results ) => {
+    //results[0]是第一个Promise中的结果
+    console.log(results[0]) //result 1
+    //results[1]是第二个promise的结果
+    console.log(results[1]) //result 2
+  });
+
+</script>
+</body>
+</html>
