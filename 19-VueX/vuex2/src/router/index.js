@@ -6,5 +6,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
 
-  ]
+  ],
+  mode: 'history'
 })
